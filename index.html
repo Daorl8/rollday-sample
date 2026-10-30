@@ -131,7 +131,7 @@ h1,h2,h3,p{ margin:0; }
 @media (min-width:900px){ .bake{ grid-template-columns:2fr 1fr 1fr; gap:22px; } }
 .bake img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:6px; }
 .bake img:first-child{ grid-column:1 / -1; aspect-ratio:16/10; }
-@media (min-width:900px){ .bake img:first-child{ grid-column:auto; aspect-ratio:4/5; } }
+@media (min-width:900px){ .bake img, .bake img:first-child{ grid-column:auto; aspect-ratio:auto; height:clamp(320px,30vw,440px); } }
 
 /* 박스 */
 .boxed .wrap{ display:grid; gap:36px; align-items:center; }
