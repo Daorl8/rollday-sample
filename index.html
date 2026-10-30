@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Roll Day 롤데이 | Cinnamon roll bakery, Nonhyeon Seoul</title>
+<meta name="description" content="All day, Roll day! 논현역 시나몬롤 전문점 롤데이. 매일 아침 매장 생산실에서 굽는 시나몬롤, 유기농 밀가루와 국내산 쌀가루. 화~일 07:00 오픈, 월요일 휴무." />
+<link rel="canonical" href="https://rollday-sample.lgt3232.workers.dev/" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="Roll Day 롤데이" />
+<meta property="og:title" content="Roll Day · All day, Roll day!" />
+<meta property="og:description" content="논현역 시나몬롤 전문점. 매일 아침 직접 굽는 시나몬롤." />
+<meta property="og:url" content="https://rollday-sample.lgt3232.workers.dev/" />
+<meta property="og:image" content="https://rollday-sample.lgt3232.workers.dev/og-rollday.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#F2EEDC" />
+<link rel="icon" href="favicon.png" type="image/png" />
+<!-- 시안 도메인 = rollday-sample.lgt3232.workers.dev. 고객 인계 시 grep lgt3232 → canonical·og:url·og:image·JSON-LD url/image 5곳 치환 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Roll Day 롤데이",
+  "url": "https://rollday-sample.lgt3232.workers.dev/",
+  "image": "https://rollday-sample.lgt3232.workers.dev/og-rollday.jpg",
+  "telephone": "+82-507-2093-9809",
+  "address": { "@type": "PostalAddress", "streetAddress": "강남대로124길 32 엔츠빌 1층 102호", "addressLocality": "강남구", "addressRegion": "서울특별시", "addressCountry": "KR" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Sunday"], "opens": "07:00", "closes": "15:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/_rollday_/", "https://youtube.com/@rollday_"]
+}
+</script>
+<style>
+@font-face{ font-family:"RD Title"; font-weight:600 800; font-display:swap; src:url("rd-grandstander.woff2") format("woff2"); }
+@font-face{ font-family:"RD Sans"; font-weight:400 700; font-display:swap; src:url("rd-pretendard.woff2") format("woff2"); }
+
+:root{
+  --beige:#F2EEDC;       /* 로고 상자 베이지(#D3D0BD 실측)를 밝힌 바탕 */
+  --white:#FFFFFF;
+  --green:#005E3B;       /* 로고 초록 실측 · 베이지 위 6.8:1 · 흰 글자 7.9:1 */
+  --ink:#1F2B24;         /* 12.6:1 */
+  --soft:#5B6157;        /* 5.5:1 */
+  --line:#DDD7C1;
+  --title:"RD Title","RD Sans",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --sans:"RD Sans",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --wrap:1160px;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--beige); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.7; word-break:keep-all; overflow-wrap:break-word; }
+img{ max-width:100%; height:auto; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,p{ margin:0; }
+:focus-visible{ outline:2px solid var(--green); outline-offset:3px; }
+.wrap{ width:min(100% - 40px, var(--wrap)); margin:0 auto; }
+.sec{ padding:84px 0; }
+@media (min-width:900px){ .sec{ padding:124px 0; } }
+.white{ background:var(--white); }
+.kicker{ font-size:.82rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--green); }
+.h2{ font-family:var(--title); font-weight:800; font-size:clamp(2.2rem,6vw,3.8rem); line-height:1.05; color:var(--green); margin-top:12px; }
+.ko{ font-size:.9rem; color:var(--soft); }
+.head{ display:grid; gap:16px; }
+@media (min-width:900px){ .head{ grid-template-columns:1fr 1fr; align-items:end; gap:56px; } .head > :last-child{ justify-self:end; text-align:right; } }
+.head .desc{ color:var(--soft); max-width:30em; }
+.head .desc + .ko{ margin-top:6px; }
+@media (min-width:900px){ .head .desc, .head .ko{ margin-left:auto; } }
+
+/* 버튼 */
+.btn{ display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 22px; border:1.5px solid var(--green); border-radius:6px; color:var(--green); font-size:.95rem; font-weight:600; transition:background .2s ease, color .2s ease; }
+.btn.fill{ background:var(--green); color:var(--white); }
+@media (hover:hover){ .btn:not(.fill):hover{ background:var(--green); color:var(--white); } .btn.fill:hover{ background:transparent; color:var(--green); } }
+
+/* 헤더 */
+.site-head{ position:sticky; top:0; z-index:50; background:rgba(242,238,220,.96); border-bottom:1px solid var(--line); }
+.site-head .wrap{ display:flex; align-items:center; justify-content:space-between; height:66px; }
+.brand{ display:flex; align-items:center; gap:10px; font-family:var(--title); font-weight:800; font-size:1.45rem; color:var(--green); }
+.brand img{ width:38px; height:auto; }
+.nav{ display:none; gap:28px; font-weight:600; font-size:.95rem; }
+@media (hover:hover){ .nav a:hover{ color:var(--green); } }
+.head-ig{ font-size:.86rem; font-weight:600; color:var(--green); }
+@media (min-width:900px){ .nav{ display:flex; } }
+
+/* 히어로 */
+.hero{ padding:40px 0 84px; }
+.hero .wrap{ display:grid; gap:36px; align-items:center; }
+@media (min-width:900px){ .hero{ padding:64px 0 120px; } .hero .wrap{ grid-template-columns:5fr 6fr; gap:64px; } }
+.hero h1{ font-family:var(--title); font-weight:800; font-size:clamp(3.2rem,10vw,6.2rem); line-height:.95; color:var(--green); margin-top:14px; }
+.hero .lead{ margin-top:24px; font-size:1.1rem; max-width:24em; }
+.hero .ko{ margin-top:8px; }
+.hero .cta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:30px; }
+.hero .when{ margin-top:18px; font-size:.86rem; color:var(--soft); }
+.hero-pic{ position:relative; margin:0; }
+.hero-pic img.ph{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:6px; }
+@media (min-width:900px){ .hero-pic img.ph{ aspect-ratio:auto; height:min(78vh,720px); } }
+.hero-pic .badge{ position:absolute; left:-14px; bottom:24px; width:clamp(96px,22vw,150px); background:var(--beige); border-radius:50%; padding:10px; }
+
+/* 스토리 */
+.story .wrap{ display:grid; gap:40px; }
+@media (min-width:900px){ .story .wrap{ grid-template-columns:5fr 6fr; gap:72px; align-items:center; } }
+.story .logo{ width:min(300px,64%); margin:0 auto; }
+.story blockquote{ margin:22px 0 0; font-size:clamp(1.2rem,2.6vw,1.5rem); line-height:1.6; }
+.story blockquote strong{ font-family:var(--title); font-weight:800; color:var(--green); }
+.story .orig{ margin-top:20px; padding-top:18px; border-top:1px solid var(--line); font-size:.94rem; color:var(--soft); line-height:1.8; }
+
+/* 롤 그리드 */
+.rolls{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:48px; }
+@media (min-width:900px){ .rolls{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+.rolls figure{ margin:0; }
+.rolls img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:6px; }
+.rolls figcaption{ margin-top:10px; font-family:var(--title); font-weight:700; font-size:1.15rem; color:var(--green); }
+.rolls figcaption span{ display:block; font-family:var(--sans); font-weight:400; font-size:.84rem; color:var(--soft); }
+
+/* 약속 (초록 면) */
+.promise{ background:var(--green); color:var(--white); }
+.promise .kicker{ color:#CFE3D6; }
+.promise .h2{ color:var(--white); }
+.promise .ko{ color:#CFE3D6; }
+.vows{ list-style:none; margin:48px 0 0; padding:0; display:grid; gap:14px; counter-reset:v; }
+@media (min-width:900px){ .vows{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+.vows li{ border:1.5px solid rgba(255,255,255,.4); border-radius:6px; padding:26px 24px; }
+.vows li::before{ counter-increment:v; content:counter(v); display:block; font-family:var(--title); font-weight:800; font-size:2.6rem; line-height:1; margin-bottom:14px; }
+.vows b{ display:block; font-family:var(--title); font-weight:700; font-size:1.3rem; line-height:1.25; }
+.vows p{ margin-top:10px; font-size:.92rem; color:#CFE3D6; }
+.bake{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px; }
+@media (min-width:900px){ .bake{ grid-template-columns:2fr 1fr 1fr; gap:22px; } }
+.bake img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:6px; }
+.bake img:first-child{ grid-column:1 / -1; aspect-ratio:16/10; }
+@media (min-width:900px){ .bake img:first-child{ grid-column:auto; aspect-ratio:4/5; } }
+
+/* 박스 */
+.boxed .wrap{ display:grid; gap:36px; align-items:center; }
+@media (min-width:900px){ .boxed .wrap{ grid-template-columns:1fr 1fr; gap:72px; } }
+.boxed img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:6px; }
+.boxed .desc{ margin-top:18px; color:var(--soft); max-width:26em; }
+.boxed .cta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+
+/* 오시는 길 */
+.visit{ display:grid; gap:36px; margin-top:48px; }
+@media (min-width:900px){ .visit{ grid-template-columns:1fr 1fr; gap:56px; } }
+.info{ margin:0; border-top:1.5px solid var(--green); }
+.info > div{ display:grid; grid-template-columns:96px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--line); }
+@media (max-width:420px){ .info > div{ grid-template-columns:80px 1fr; gap:10px; } }
+.info dt{ font-weight:700; color:var(--green); }
+.info dd{ margin:0; }
+.info dd small{ display:block; color:var(--soft); font-size:.86rem; margin-top:4px; }
+.hours{ border-collapse:collapse; font-variant-numeric:tabular-nums; }
+.hours th, .hours td{ padding:2px 0; text-align:left; font-weight:400; vertical-align:baseline; white-space:nowrap; }
+.hours th{ padding-right:14px; font-weight:600; }
+.hours td small{ display:inline; margin-left:6px; font-size:.8rem; }
+.visit .links{ display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+.mapframe{ width:100%; height:340px; border:1.5px solid var(--green); border-radius:6px; }
+@media (min-width:900px){ .mapframe{ height:100%; min-height:460px; } }
+
+/* 푸터 */
+.foot{ background:var(--green); color:#CFE3D6; padding:52px 0 120px; text-align:center; font-size:.84rem; }
+@media (min-width:900px){ .foot{ padding:60px 0; } }
+.foot .wm{ font-family:var(--title); font-weight:800; font-size:2.2rem; color:var(--white); line-height:1; }
+.foot p{ margin-top:12px; }
+
+/* 모바일 하단 바: 인스타그램(주) · 전화 · 길찾기 */
+.quick{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:6px; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); background:rgba(242,238,220,.97); border-top:1px solid var(--line); }
+.quick a{ display:flex; align-items:center; justify-content:center; min-height:48px; border:1.5px solid var(--green); border-radius:6px; color:var(--green); font-size:.86rem; font-weight:600; }
+.quick a.fill{ background:var(--green); color:var(--white); }
+@media (min-width:900px){ .quick{ display:none; } }
+
+/* 리빌: setInterval 구동 */
+.js .reveal{ opacity:0; transform:translateY(18px); transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1); transition-delay:var(--d,0s); }
+.js .reveal.in{ opacity:1; transform:none; }
+@media print{ .js .reveal{ opacity:1; transform:none; } }
+</style>
+<noscript><style>.reveal{ opacity:1 !important; transform:none !important; }</style></noscript>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Roll Day home"><img src="rd-mark.webp" alt="" width="240" height="240" />Roll Day</a>
+    <nav class="nav" aria-label="Main"><a href="#story">Story</a><a href="#rolls">Rolls</a><a href="#promise">Promise</a><a href="#visit">Visit</a></nav>
+    <a class="head-ig" href="https://www.instagram.com/_rollday_/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="kicker">Cinnamon roll bakery · Nonhyeon, Seoul</p>
+        <h1>All day,<br />Roll day!</h1>
+        <p class="lead">Cinnamon rolls, baked fresh every morning in our own kitchen.</p>
+        <p class="ko">논현역 시나몬롤 전문점 롤데이 · 매일 아침 매장에서 직접 굽습니다</p>
+        <div class="cta">
+          <a class="btn fill" href="https://www.instagram.com/_rollday_/" target="_blank" rel="noopener">See today’s rolls</a>
+          <a class="btn" href="#visit">Visit us</a>
+        </div>
+        <p class="when">Opens 7:00 AM · Closed Mondays · 매일 아침 7시 오픈, 월요일 휴무</p>
+      </div>
+      <figure class="hero-pic reveal" style="--d:.1s">
+        <img class="ph" src="rd-hero.webp" alt="오븐 팬에 가득 담긴 갓 구운 시나몬롤" width="960" height="1200" />
+        <img class="badge" src="rd-mark.webp" alt="" width="240" height="240" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec white story" id="story" aria-labelledby="story-h">
+    <div class="wrap">
+      <img class="logo reveal" loading="lazy" src="rd-logo.webp" alt="Roll Day 로고, 초록 원 안의 흰 토끼" width="480" height="506" />
+      <div class="reveal" style="--d:.1s">
+        <p class="kicker">Our story</p>
+        <h2 id="story-h" class="h2">One bite,<br />one happy day.</h2>
+        <blockquote>On a hard day at work, a single bite of cinnamon roll started it all. The sweetness and the warm scent of cinnamon took me to happiness, the easiest way. Now I want to share it. <strong>All day, Roll day!</strong></blockquote>
+        <p class="orig">직장 생활로 힘들었던 어느 날 우연히 맛본 시나몬롤 한 조각이 이 카페의 시작이었습니다. 한입에 들어온 달콤함과 시나몬의 향긋한 향이 저를 가장 쉽게 행복으로 데려다주었습니다. 이제 그 행복을 나누고 싶습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="rolls" aria-labelledby="rolls-h">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><p class="kicker">The rolls</p><h2 id="rolls-h" class="h2">Rolled, baked,<br />glazed.</h2></div>
+        <div><p class="desc">From the classic glaze to seasonal toppings. The line-up changes, so check Instagram for today’s rolls.</p><p class="ko">클래식부터 시즌 토핑까지, 그날의 시나몬롤은 인스타그램에서 확인해 주세요.</p></div>
+      </div>
+      <div class="rolls">
+        <figure class="reveal"><img loading="lazy" src="rd-roll-classic.webp" alt="아이싱과 우박 설탕을 올린 시나몬롤" width="800" height="1000" /><figcaption>Glazed<span>글레이즈 시나몬롤</span></figcaption></figure>
+        <figure class="reveal"><img loading="lazy" src="rd-roll-pecan.webp" alt="피칸과 슈가 파우더를 올린 시나몬롤" width="720" height="900" /><figcaption>Pecan<span>피칸</span></figcaption></figure>
+        <figure class="reveal"><img loading="lazy" src="rd-roll-sugar.webp" alt="시나몬 설탕을 입힌 시나몬롤" width="720" height="900" /><figcaption>Cinnamon sugar<span>시나몬 슈가</span></figcaption></figure>
+        <figure class="reveal"><img loading="lazy" src="rd-roll-cream.webp" alt="크림치즈와 베리 잼을 올린 시나몬롤" width="800" height="999" /><figcaption>Cream &amp; berry<span>크림치즈 · 베리</span></figcaption></figure>
+        <figure class="reveal"><img loading="lazy" src="rd-roll-strawberry.webp" alt="생크림과 딸기를 올린 시나몬롤" width="800" height="1000" /><figcaption>Strawberry<span>딸기</span></figcaption></figure>
+        <figure class="reveal"><img loading="lazy" src="rd-roll-plate.webp" alt="흰 접시에 놓인 시나몬롤" width="720" height="900" /><figcaption>Daily roll<span>그날의 시나몬롤</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec promise" id="promise" aria-labelledby="promise-h">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><p class="kicker">Our promise</p><h2 id="promise-h" class="h2">Roll Day<br />promises.</h2></div>
+        <div><p class="ko">롤데이는 약속합니다!</p></div>
+      </div>
+      <ol class="vows">
+        <li class="reveal"><b>Baked every morning, in our own kitchen.</b><p>롤데이의 시나몬롤은 매일 아침 매장의 자체 생산실에서 구워냅니다.</p></li>
+        <li class="reveal"><b>Organic wheat flour, Korean rice flour.</b><p>유기농 밀가루와 국내산 쌀가루를 배합해 매일 정성스럽게 반죽합니다.</p></li>
+        <li class="reveal"><b>Made honestly, as if for our own family.</b><p>내 가족이 먹는다고 생각하고 정직하게 만듭니다.</p></li>
+      </ol>
+      <div class="bake">
+        <img class="reveal" loading="lazy" src="rd-bake.webp" alt="팬 위에서 갓 구워진 시나몬롤" width="900" height="1125" />
+        <img class="reveal" loading="lazy" src="rd-case.webp" alt="유리 진열장 안의 시나몬롤" width="800" height="1000" />
+        <img class="reveal" loading="lazy" src="rd-shop.webp" alt="롤데이 로고가 보이는 매장 진열대" width="800" height="1000" />
+      </div>
+    </div>
+  </section>
+
+  <section class="sec white boxed" aria-labelledby="box-h">
+    <div class="wrap">
+      <img class="reveal" loading="lazy" src="rd-box.webp" alt="초록 토끼 로고가 찍힌 롤데이 상자들" width="900" height="1125" />
+      <div class="reveal" style="--d:.1s">
+        <p class="kicker">To go</p>
+        <h2 id="box-h" class="h2">Boxed<br />to share.</h2>
+        <p class="desc">Take a box home, or bring one to someone you love.</p>
+        <p class="ko">롤데이 상자에 담아 포장해 드려요. 배달 주문도 가능해요.</p>
+        <div class="cta">
+          <a class="btn fill" href="https://baemin.me/6o6MlAuOzO" target="_blank" rel="noopener">배달의민족 주문</a>
+          <a class="btn" href="https://youtube.com/@rollday_" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="visit" aria-labelledby="visit-h">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><p class="kicker">Visit</p><h2 id="visit-h" class="h2">Come by<br />for a roll.</h2></div>
+        <div><p class="desc">At the end of Yeongdong Market, a short walk from Nonhyeon Station.</p><p class="ko">논현역 3번 출구에서 직진, 영동시장 입구로 들어와 끝자락에 롤데이 간판이 보여요.</p></div>
+      </div>
+      <div class="visit">
+        <div class="reveal">
+          <dl class="info">
+            <div><dt>Address</dt><dd>서울 강남구 강남대로124길 32 엔츠빌 1층 102호<small>신분당선 논현역 3번 출구에서 약 377m</small></dd></div>
+            <div><dt>Hours</dt><dd>
+              <table class="hours"><tbody>
+                <tr><th scope="row">수 ~ 토</th><td>07:00 ~ 18:00<small>L.O. 17:40</small></td></tr>
+                <tr><th scope="row">화 · 일</th><td>07:00 ~ 15:00<small>L.O. 14:40</small></td></tr>
+                <tr><th scope="row">월</th><td>정기휴무</td></tr>
+              </tbody></table>
+            </dd></div>
+            <div><dt>Call</dt><dd><a href="tel:050720939809">0507-2093-9809</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/_rollday_/" target="_blank" rel="noopener">@_rollday_</a></dd></div>
+          </dl>
+          <div class="links">
+            <a class="btn fill" href="https://www.instagram.com/_rollday_/" target="_blank" rel="noopener">Instagram</a>
+            <a class="btn" href="https://map.naver.com/p/entry/place/1274978413" target="_blank" rel="noopener">네이버 길찾기</a>
+            <a class="btn" href="tel:050720939809">Call</a>
+          </div>
+        </div>
+        <iframe class="mapframe reveal" title="롤데이 위치 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C124%EA%B8%B8%2032&amp;z=17&amp;output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="wm">Roll Day</div>
+    <p>롤데이 · 서울 강남구 강남대로124길 32 엔츠빌 1층 102호 · 0507-2093-9809<br />화 ~ 일 07:00 오픈 · 월요일 휴무 · © Roll Day</p>
+  </div>
+</footer>
+
+<div class="quick" aria-label="Quick links">
+  <a class="fill" href="https://www.instagram.com/_rollday_/" target="_blank" rel="noopener">Instagram</a>
+  <a href="tel:050720939809">Call</a>
+  <a href="https://map.naver.com/p/entry/place/1274978413" target="_blank" rel="noopener">Map</a>
+</div>
+
+<script>
+(function(){
+  /* 리빌 */
+  var pending=[].slice.call(document.querySelectorAll('.reveal'));
+  pending.forEach(function(el){
+    var sib=[].slice.call(el.parentNode.children).filter(function(c){ return c.classList.contains('reveal'); });
+    if(sib.length>1 && !el.style.getPropertyValue('--d')){ el.style.setProperty('--d',(Math.min(sib.indexOf(el),4)*0.06)+'s'); }
+  });
+  var t=setInterval(function(){
+    if(!pending.length){ clearInterval(t); return; }
+    if(window.innerHeight + window.pageYOffset >= document.documentElement.scrollHeight - 4){
+      pending.forEach(function(el){ el.classList.add('in'); }); pending=[]; return;
+    }
+    var line=window.innerHeight*0.92;
+    pending=pending.filter(function(el){
+      if(el.getBoundingClientRect().top < line){ el.classList.add('in'); return false; }
+      return true;
+    });
+  },120);
+  /* 앵커 스크롤 */
+  var head=document.querySelector('.site-head');
+  [].forEach.call(document.querySelectorAll('a[href^="#"]'),function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href'); var el=id==='#top'?document.body:document.querySelector(id);
+      if(!el) return; e.preventDefault();
+      var start=window.pageYOffset, end=id==='#top'?0:el.getBoundingClientRect().top+start-head.offsetHeight+1;
+      var t0=Date.now(), dur=520;
+      var iv=setInterval(function(){
+        var p=Math.min((Date.now()-t0)/dur,1), e2=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+        window.scrollTo(0,start+(end-start)*e2);
+        if(p>=1) clearInterval(iv);
+      },16);
+    });
+  });
+})();
+</script>
+</body>
+</html>
